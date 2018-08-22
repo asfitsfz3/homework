@@ -18,9 +18,9 @@ function task1(array $strings, $unite_strings = false)
 
 function task2(string $operation, ...$numbers)
 {
-    $s='';
-    $res=reset($numbers);//так я просто получаю первый элемент этого ассоциативного массива
-    $s = $s . $res;
+    $s   = '';
+    $res = reset($numbers);//так я просто получаю первый элемент этого ассоциативного массива
+    $s   = $s . $res;
 
     for ($i=1; $i<count($numbers); $i++) {
         switch ($operation) {
@@ -37,7 +37,7 @@ function task2(string $operation, ...$numbers)
                 $res = $res / $numbers[$i];
                 break;
         }
-        $s = $s . $operation . $numbers[$i];
+        $s = $s . " " . $operation . " " . $numbers[$i];
     }
 
     $s = $s . " = " . $res;
