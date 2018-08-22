@@ -91,6 +91,7 @@ function task8()
     $file =  fopen("test.txt", "w");
     fwrite($file, "hello again");
     fclose($file);
+    return "Файл создан";
 }
 
 function task9($filename)
