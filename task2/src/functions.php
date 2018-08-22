@@ -27,12 +27,15 @@ function task2(string $operation, ...$numbers)
             case "+":
                 $res = $res + $numbers[$i];
                 break;
+
             case "-":
                 $res = $res - $numbers[$i];
                 break;
+
             case "*":
                 $res = $res * $numbers[$i];
                 break;
+
             case "/":
                 $res = $res / $numbers[$i];
                 break;
@@ -42,4 +45,55 @@ function task2(string $operation, ...$numbers)
 
     $s = $s . " = " . $res;
     return $s;
+}
+
+function task3(...$numbers)
+{
+    if (!(count($numbers)==2) or (!((is_int($numbers[0])) and (is_int($numbers[1]))))) {
+        return "Неправильное количество или тип аргументов";
+    } else {
+        echo "<table>";
+        for ($i=1; $i<=$numbers[1]; $i++) {
+            echo "<tr>";
+            for ($j=1; $j<=$numbers[0]; $j++) {
+                echo "<td align='center'>";
+                echo $i*$j;
+                echo "</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+}
+
+function task4()
+{
+    return date("d.m.Y h:i", time());
+}
+
+function task5()
+{
+    return strtotime("24.02.2016 00:00:00");
+}
+
+function task6($str)
+{
+    return str_replace("К", "", $str);
+}
+
+function task7($str)
+{
+    return str_replace("Две", "Три", $str);
+}
+
+function task8()
+{
+    $file =  fopen("test.txt", "w");
+    fwrite($file, "hello again");
+    fclose($file);
+}
+
+function task9($filename)
+{
+    return file_get_contents($filename);
 }
