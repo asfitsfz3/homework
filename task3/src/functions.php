@@ -37,9 +37,10 @@ function task1($filename)
         $xml = new SimpleXMLElement($filename, false, true);
         $sp = 0;
         parse_xml($xml, $sp);
+        echo PHP_EOL . PHP_EOL;
         return 0;
     } else {
-        return "Файл не существует";
+        return "Файл не существует" . PHP_EOL . PHP_EOL;
     }
 }
 
@@ -96,6 +97,7 @@ function task2()
             echo "Отличающиеся элементы отсутствуют" . PHP_EOL;
         }
     }
+    echo PHP_EOL . PHP_EOL;
 }
 
 function task3()
@@ -119,18 +121,19 @@ function task3()
                 $sum = $sum + $value;
             }
         }
-        echo $sum;
+        echo $sum . PHP_EOL . PHP_EOL;
     }
 }
 
 function task4()
 {
+    //еще один рекурсивный поиск
     $search_result = "";
     function search($s_key, $arr, &$s_result)
     {
         foreach ($arr as $key => $value) {
-            if ($key == $s_key) {
-                $s_result = $key . ": " . $value . PHP_EOL;
+            if ($key === $s_key) {
+                $s_result = $key . ": " . $value;
             } else {
                 if (is_array($value)) {
                     search($s_key, $value, $s_result);
@@ -140,7 +143,10 @@ function task4()
     }
 
     $url="https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json";
-    //var_dump(json_decode(file_get_contents($url), true));
+
     search("title", json_decode(file_get_contents($url), true), $search_result);
-    echo $search_result;
+    echo $search_result . PHP_EOL;
+
+    search("pageid", json_decode(file_get_contents($url), true), $search_result);
+    echo $search_result . PHP_EOL;
 }
