@@ -35,7 +35,7 @@ function task1($filename)
 
     if (file_exists($filename)) {
         $xml = new SimpleXMLElement($filename, false, true);
-        $sp=0;
+        $sp = 0;
         parse_xml($xml, $sp);
         return 0;
     } else {
@@ -64,5 +64,34 @@ function task2()
     );
 
     file_put_contents("output.json", json_encode($something));
-    var_dump(json_decode(file_get_contents("output.json")));
+    $something2 = json_decode(file_get_contents("output.json"), true);
+
+    if (rand(1, 2) == 1) {
+        for ($i=1; $i<=count($something2); $i++) {
+            for ($j=1; $j<=count($something2[$i]); $j++) {
+                $something2[$i][$j] = "something" . rand(1, 9);
+            }
+        }
+    }
+
+    file_put_contents("output2.json", json_encode($something2));
+
+    $something = json_decode(file_get_contents("output.json"), true);
+    $something2 = json_decode(file_get_contents("output2.json"), true);
+
+    echo "Отличающиеся элементы:" . PHP_EOL;
+    for ($i=1; $i<=count($something); $i++) {
+        echo "Подмассив " . $i . ":" .PHP_EOL;
+        $diversity_count = 0;
+        for ($j=1; $j<=count($something[$i]); $j++) {
+            if ($something[$i][$j]!=$something2[$i][$j]) {
+                echo "Элементы № " . $j . ": " . $something[$i][$j];
+                echo " ~ " . $something2[$i][$j] . PHP_EOL;
+                $diversity_count++;
+            }
+        }
+        if ($diversity_count == 0) {
+            echo "Отличающиеся элементы отсутствуют" . PHP_EOL;
+        }
+    }
 }
