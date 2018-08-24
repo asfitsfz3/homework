@@ -83,6 +83,7 @@ function task2()
     for ($i=1; $i<=count($something); $i++) {
         echo "Подмассив " . $i . ":" .PHP_EOL;
         $diversity_count = 0;
+
         for ($j=1; $j<=count($something[$i]); $j++) {
             if ($something[$i][$j]!=$something2[$i][$j]) {
                 echo "Элементы № " . $j . ": " . $something[$i][$j];
@@ -90,8 +91,56 @@ function task2()
                 $diversity_count++;
             }
         }
+
         if ($diversity_count == 0) {
             echo "Отличающиеся элементы отсутствуют" . PHP_EOL;
         }
     }
+}
+
+function task3()
+{
+    $random_numbers = array();
+
+    for ($i=0; $i<=49; $i++) {
+        $random_numbers[$i]=rand(1, 100);
+    }
+    //var_dump($random_numbers);
+    file_put_contents("example.csv", implode(",", $random_numbers));
+
+    if (file_exists("example.csv")) {
+        $file = fopen("example.csv", "r");
+        $result = fgetcsv($file, 1000, ",");
+        fclose($file);
+
+        $sum = 0;
+        foreach ($result as $value) {
+            if ($value % 2 == 0) {
+                $sum = $sum + $value;
+            }
+        }
+        echo $sum;
+    }
+}
+
+function task4()
+{
+    $search_result = "";
+    function search($s_key, $arr, &$s_result)
+    {
+        foreach ($arr as $key => $value) {
+            if ($key == $s_key) {
+                $s_result = $key . ": " . $value . PHP_EOL;
+            } else {
+                if (is_array($value)) {
+                    search($s_key, $value, $s_result);
+                }
+            }
+        }
+    }
+
+    $url="https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json";
+    //var_dump(json_decode(file_get_contents($url), true));
+    search("title", json_decode(file_get_contents($url), true), $search_result);
+    echo $search_result;
 }
