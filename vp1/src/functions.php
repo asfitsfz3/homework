@@ -79,3 +79,69 @@ function count_orders($user_id)
         return false;
     }
 }
+
+function get_users_information()
+{
+    $db = new PDO("mysql:host=localhost;dbname=burger", "root", "");
+
+    $sql = "SELECT * FROM users";
+    $p_query = $db->prepare($sql);
+
+    if ($p_query->execute()) {
+        $result = $p_query->fetchAll();
+
+        echo PHP_EOL . "----------------------" . PHP_EOL;
+        echo "Список зарегистрированных пользователей:";
+        echo PHP_EOL . "----------------------" . PHP_EOL;
+
+        foreach ($result as $value) {
+            echo "Идентификаицонный номер: " . $value['id'] . PHP_EOL;
+            echo "E-mail: " . $value['email'] . PHP_EOL;
+            echo "Имя: " . $value['name'] . PHP_EOL;
+            echo "Номер телефона: " . $value['phone_number'] . PHP_EOL. PHP_EOL;
+        }
+    }
+}
+
+function get_orders_information()
+{
+    $db = new PDO("mysql:host=localhost;dbname=burger", "root", "");
+
+    $sql  = "SELECT * ";
+    $sql .= "FROM users JOIN orders ON orders.user_id = users.id";
+    $p_query = $db->prepare($sql);
+
+    if ($p_query->execute()) {
+        $result = $p_query->fetchAll();
+
+        echo PHP_EOL . "----------------------" . PHP_EOL;
+        echo "Список заказов:";
+        echo PHP_EOL . "----------------------" . PHP_EOL;
+
+        foreach ($result as $value) {
+            echo "Заказ №" . $value["id"] . PHP_EOL;
+            echo "Имя: " . $value["name"] . PHP_EOL;
+            echo "E-mail: " . $value["email"] . PHP_EOL;
+            echo "Номер телефона: " . $value["phone_number"] . PHP_EOL;
+            echo "Адрес: улица " . $value["street"];
+            echo ", дом " . $value["home"];
+            echo ", корпус " . $value["part"];
+            echo ", этаж " . $value["floor"];
+            echo ", квартира " . $value["appt"] . PHP_EOL;
+            echo "Комментарий: " . $value["comment"] . PHP_EOL;
+
+            if ($value["callback"]==1) {
+                echo "Нужно перезвонить" . PHP_EOL;
+            } else {
+                echo "Не нужно перезванивать" . PHP_EOL;
+            }
+            if ($value["payment"]==0) {
+                echo "Потребуется сдача" . PHP_EOL;
+            } else {
+                echo "Оплата по карте" . PHP_EOL;
+            }
+                //echo $key.":" . $item . "; ";
+            echo PHP_EOL;
+        }
+    }
+}

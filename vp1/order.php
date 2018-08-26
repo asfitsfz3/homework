@@ -11,8 +11,14 @@ $part = $_POST['part'];
 $appt = $_POST['appt'];
 $floor = $_POST['floor'];
 $comment = $_POST['comment'];
+
 $payment = $_POST['payment'];
-$callback = $_POST['callback'];
+
+if (($_POST['callback']!=null)) {
+    $callback=0;
+} else {
+    $callback=1;
+}
 
 $answer  = "Ваш заказ будет доставлен по адресу:\n";
 $answer .= "Улица " . $street . ", ";
@@ -33,4 +39,6 @@ if ($c_orders==1) {
 } else {
     $answer .= "Спасибо. Это ваш " . $c_orders . " заказ.";
 }
+
 mail($email, "Заказ № " . $order_id, $answer);
+echo "Заказ принят. Подробности отправлены на электронную почту.";
