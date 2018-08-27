@@ -28,17 +28,24 @@ $answer .= "этаж " . $floor . ", ";
 $answer .= "квартира " . $appt . ".\n";
 $answer .= "Содержимое заказа: DarkBeefBurger (500 р.) - 1 шт.\n";
 
-$user_id = check_email($email);
-if ($user_id=="not_exists") {
-    $user_id = create_user($email, $name, $phone_number);
-}
-$order_id = make_order($user_id, $street, $home, $part, $appt, $floor, $comment, $payment, $callback);
-$c_orders = count_orders($user_id);
-if ($c_orders==1) {
-    $answer .= "Спасибо. Это ваш первый заказ.";
-} else {
-    $answer .= "Спасибо. Это ваш " . $c_orders . " заказ.";
-}
+if (($email!=null) and ($phone_number!=null)) {
+    $user_id = check_email($email);
 
-mail($email, "Заказ № " . $order_id, $answer);
-echo "Заказ принят. Подробности отправлены на электронную почту.";
+    if ($user_id=="not_exists") {
+        $user_id = create_user($email, $name, $phone_number);
+    }
+
+    $order_id = make_order($user_id, $street, $home, $part, $appt, $floor, $comment, $payment, $callback);
+    $c_orders = count_orders($user_id);
+
+    if ($c_orders==1) {
+        $answer .= "Спасибо. Это ваш первый заказ.";
+    } else {
+        $answer .= "Спасибо. Это ваш " . $c_orders . " заказ.";
+    }
+
+    mail($email, "Заказ № " . $order_id, $answer);
+    echo "Заказ принят. Подробности отправлены на электронную почту.";
+} else {
+    echo "Заказ не принят. Заполните поля номера телефона и электронной почты.";
+}
