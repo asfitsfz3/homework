@@ -16,4 +16,4 @@ require "Automobile.php";
 require "Niva.php";
 
 $some_car = new Niva("manual");
-$some_car->startMotion(200, 10, "forward");
+$some_car->startMotion(200, 18, "forward");

@@ -17,6 +17,8 @@ class Automobile
                     $this->switchToForwardFirst();
                 } elseif ($speed > 20) {
                     $this->switchToForwardSecond();
+                } else {
+                    exit;
                 }
 
             } elseif ($this->transmission_type == "auto") {
