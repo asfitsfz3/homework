@@ -27,7 +27,7 @@ trait Engine
         for ($i = 0; $i <= $distance; $i = $i+10) {
             $this->temperature = $this->temperature + 5;
 
-            echo "Скорость:". $this->speed . " Дистанция:" . $i . " Температура: ";
+            echo "Скорость:". $this->speed . "м/с Дистанция:" . $i . "м Температура: ";
             echo $this->temperature;
 
             if ($this->temperature >= 90) {
