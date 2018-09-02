@@ -12,7 +12,7 @@
     <input type="submit">
 </form>
 
-<form action="/MainController/Login" method="POST">
+<form action="/MainController/authentification" method="POST">
     Авторизация:
     Имя пользователя: <input type="text" name="username" value="">
     Пароль: <input type="password" name="password" value="">
