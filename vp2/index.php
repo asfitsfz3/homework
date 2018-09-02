@@ -10,7 +10,7 @@ CoreAutoload::load();
 $routes = explode('/', $_SERVER['REQUEST_URI']);
 
 $controller_name = "MainController";
-$action_name = 'doSomething';
+$action_name = 'renderLoginScreen';
 
 if (!empty($routes[1])) {
     $controller_name = $routes[1];
