@@ -28,6 +28,7 @@
 Загрузите файл:<br>
 <br>
 <form enctype="multipart/form-data" action="/UploadFileController/UploadFile" method="POST">
+    <input type="hidden" name="username" value="<?echo $resurse[0]['name'];?>" />
     <input type="hidden" name="MAX_FILE_SIZE" value="3000000000" />
     Отправить этот файл: <input name="userfile" type="file" />
     <input type="submit" value="Отправить файл" />
