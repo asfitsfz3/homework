@@ -52,4 +52,36 @@ class UserModel
                 return false;
         }
     }
+
+    public static function GetFullUserInformation($username, $password)
+    {
+        $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
+
+        $sql = "SELECT * FROM users where name=? and password=?";
+        $p_query = $db->prepare($sql);
+
+        $p_query->bindParam(1, $username);
+        $p_query->bindParam(2, $password);
+
+        if ($p_query->execute()) {
+            return $result = $p_query->fetchAll();
+        }
+    }
+
+    public static function ChangeUserInformation($arr)
+    {
+        $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
+
+        $sql = "UPDATE users SET name=?, password=?, description=?, age=? where name=? and password=?";
+        $p_query = $db->prepare($sql);
+
+        $p_query->bindParam(1, $arr['new_username']);
+        $p_query->bindParam(2, $arr['new_password']);
+        $p_query->bindParam(3, $arr['description']);
+        $p_query->bindParam(4, $arr['age']);
+        $p_query->bindParam(5, $arr['username']);
+        $p_query->bindParam(6, $arr['password']);
+
+        return $p_query->execute();
+    }
 }

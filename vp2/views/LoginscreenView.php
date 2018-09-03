@@ -10,14 +10,14 @@
     Имя пользователя: <input type="text" name="username" value="">
     Пароль: <input type="password" name="password" value="">
     <input type="submit">
-</form>
+</form><br>
 
 <form action="/MainController/authentification" method="POST">
     Авторизация:
     Имя пользователя: <input type="text" name="username" value="">
     Пароль: <input type="password" name="password" value="">
     <input type="submit">
-</form>
+</form><br>
 
 </body>
 </html>

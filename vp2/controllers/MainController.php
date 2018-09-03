@@ -25,12 +25,27 @@ class MainController
         if ($checked > 0) {
             $res = UserModel::CheckPassword($_POST['username'], $_POST['password']);
             if ($res) {
+                $resurse = UserModel::GetFullUserInformation($_POST['username'], $_POST['password']);
                 require_once dirname(__DIR__, 1) . "/views/Cabinet.php";
             } else {
                 require_once dirname(__DIR__, 1) . "/views/AuthentificationError.php";
             }
         } else {
             require_once dirname(__DIR__, 1) . "/views/AuthentificationError.php";
+        }
+    }
+
+    public static function ChangeInformation()
+    {
+        $checked1 = UserModel::CheckUser($_POST['username']);
+        $checked2 = UserModel::CheckPassword($_POST['username'], $_POST['password']);
+        if (($checked1 > 0) and ($checked2)) {
+
+            UserModel::ChangeUserInformation($_POST);
+            MainController::authentification();
+            //require_once dirname(__DIR__, 1) . "/views/ChangeSuccess.php";
+        } else {
+            require_once dirname(__DIR__, 1) . "/views/ChangeError.php";
         }
     }
 }
