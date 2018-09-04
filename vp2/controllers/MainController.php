@@ -41,9 +41,19 @@ class MainController
         $checked1 = UserModel::CheckUser($_POST['username']);
         $checked2 = UserModel::CheckPassword($_POST['username'], $_POST['password']);
         $checked3 = UserModel::CheckUser($_POST['new_username']);
-        if (($checked1 > 0) and ($checked2) and ($checked3==0)) {
-            UserModel::ChangeUserInformation($_POST);
-            require_once dirname(__DIR__, 1) . "/views/ChangeSuccess.php";
+        //if ((($checked1 > 0) and ($checked2)) and (($checked3==0) or ($_POST['username']==$_POST['new_username']))) {
+        if ($checked2) {
+            if ($_POST['username'] == $_POST['new_username']) {
+                UserModel::ChangeUserInformation($_POST);
+                require_once dirname(__DIR__, 1) . "/views/ChangeSuccess.php";
+            } else {
+                if ($checked3==0) {
+                    UserModel::ChangeUserInformation($_POST);
+                    require_once dirname(__DIR__, 1) . "/views/ChangeSuccess.php";
+                } else {
+                    require_once dirname(__DIR__, 1) . "/views/ChangeError.php";
+                }
+            }
         } else {
             require_once dirname(__DIR__, 1) . "/views/ChangeError.php";
         }
@@ -59,5 +69,11 @@ class MainController
         } else {
             require_once dirname(__DIR__, 1) . "/views/ChangeError.php";
         }
+    }
+
+    public static function renderUserList()
+    {
+        $resurse = UserModel::getAllUsersInformation();
+        require_once dirname(__DIR__, 1) . "/views/UserList.php";
     }
 }

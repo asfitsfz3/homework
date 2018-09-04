@@ -9,7 +9,7 @@
 Личный кабинет пользователя <?echo $resurse[0]['name'];?><br>
 <img src="../uploads/<?echo $resurse[0]['avatar'];?>" alt="Картинка отсутствует"><br>
 Имя: <?echo $resurse[0]['name'];?><br>
-Пароль: <?echo $resurse[0]['password'];?><br>
+Пароль: **********<br>
 Описание: <?echo $resurse[0]['description'];?><br>
 Возраст <?echo $resurse[0]['age'];?><br>
 <br>
@@ -17,13 +17,15 @@
 Список файлов, которые вы загрузили:
 <br>
 <form action="/MainController/ChangeAvatar" method="POST">
-    <input type="hidden" name="username" value="<?echo $resurse[0]['name'];?>" />
-    <input type="hidden" name="password" value="<?echo $resurse[0]['password'];?>" />
+
     <?php
     foreach ($user_images as $value) {?>
         <?echo $value['path'];?>
 <input type="radio" name="avatar" value="<?echo $value['path'];?>"><br>
     <?}?>
+    Введите имя пользователя и пароль, чтобы изменить аватарку:<br>
+    Имя пользователя:<input type="text" name="username" value="" /><br>
+    Пароль: <input type="text" name="password" value="" /><br>
     <input type="submit">
 </form>
 
@@ -44,7 +46,9 @@
 Загрузите файл:<br>
 <br>
 <form enctype="multipart/form-data" action="/UploadFileController/UploadFile" method="POST">
-    <input type="hidden" name="username" value="<?echo $resurse[0]['name'];?>" />
+    Введите имя пользователя и пароль, чтобы загрузить файл:<br>
+    Имя пользователя:<input type="text" name="username" value="" /><br>
+    Пароль: <input type="text" name="password" value="" /><br>
     <input type="hidden" name="MAX_FILE_SIZE" value="3000000000" />
     Отправить этот файл: <input name="userfile" type="file" />
     <input type="submit" value="Отправить файл" />

@@ -69,6 +69,18 @@ class UserModel
         }
     }
 
+    public static function getAllUsersInformation()
+    {
+        $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
+
+        $sql = "SELECT * FROM users";
+        $p_query = $db->prepare($sql);
+
+        if ($p_query->execute()) {
+            return $result = $p_query->fetchAll();
+        }
+    }
+
     public static function getUserFilesInformation($user_id)
     {
         $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");

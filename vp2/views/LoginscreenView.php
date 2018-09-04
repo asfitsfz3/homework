@@ -5,6 +5,7 @@
     <title></title>
 </head>
 <body>
+<a href="/MainController/renderUserList">Посмотреть список зарегистрированных пользователей</a><br>
 <form action="/MainController/Registered" method="POST">
     Регистрация:
     Имя пользователя: <input type="text" name="username" value="">
