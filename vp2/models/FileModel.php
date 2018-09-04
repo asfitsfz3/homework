@@ -1,10 +1,11 @@
 <?php
 namespace app;
+
 use PDO;
 
 class FileModel
 {
-    public static function RegisterImage($username, $imagename)
+    public static function registerImage($username, $imagename)
     {
         $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 

@@ -24,6 +24,6 @@ $controller_name = "app\\" . $controller_name;
 if ((class_exists($controller_name)) and (method_exists($controller_name, $action_name))) {
     $controller_name::$action_name();
 } else {
-    echo $controller_name . $action_name . PHP_EOL;
-    //require "errors/404.php";
+    echo $controller_name . " " .$action_name . PHP_EOL;
+    require "errors/404.php";
 }

@@ -1,10 +1,11 @@
 <?php
 namespace app;
+
 use PDO;
 
 class UserModel
 {
-    public static function CheckUser($username)
+    public static function checkUser($username)
     {
         $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
@@ -18,7 +19,7 @@ class UserModel
         }
     }
 
-    public static function CheckPassword($username, $password)
+    public static function checkPassword($username, $password)
     {
         $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
@@ -36,7 +37,7 @@ class UserModel
         }
     }
 
-    public static function RegisterUser(array $arr)
+    public static function registerUser(array $arr)
     {
         $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
@@ -48,12 +49,12 @@ class UserModel
 
         if ($p_query->execute()) {
                 return true;
-            } else {
+        } else {
                 return false;
         }
     }
 
-    public static function GetFullUserInformation($username, $password)
+    public static function getFullUserInformation($username, $password)
     {
         $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
@@ -68,7 +69,23 @@ class UserModel
         }
     }
 
-    public static function ChangeUserInformation($arr)
+    public static function getUserFilesInformation($user_id)
+    {
+        $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
+
+        $sql = "SELECT * FROM images where user_id=?";
+        $p_query = $db->prepare($sql);
+
+        $p_query->bindParam(1, $user_id);
+
+        if ($p_query->execute()) {
+            return $result = $p_query->fetchAll();
+        } else {
+            return false;
+        }
+    }
+
+    public static function changeUserInformation($arr)
     {
         $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
@@ -81,6 +98,20 @@ class UserModel
         $p_query->bindParam(4, $arr['age']);
         $p_query->bindParam(5, $arr['username']);
         $p_query->bindParam(6, $arr['password']);
+
+        return $p_query->execute();
+    }
+
+    public static function changeUserAvatar($username, $password, $avatar)
+    {
+        $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
+
+        $sql = "UPDATE users SET avatar=? where name=? and password=?";
+        $p_query = $db->prepare($sql);
+
+        $p_query->bindParam(1, $avatar);
+        $p_query->bindParam(2, $username);
+        $p_query->bindParam(3, $password);
 
         return $p_query->execute();
     }

@@ -7,10 +7,26 @@
 <body>
 <a href="/">Вернуться к начальной странице</a><br>
 Личный кабинет пользователя <?echo $resurse[0]['name'];?><br>
+<img src="../uploads/<?echo $resurse[0]['avatar'];?>" alt="Картинка отсутствует"><br>
 Имя: <?echo $resurse[0]['name'];?><br>
 Пароль: <?echo $resurse[0]['password'];?><br>
 Описание: <?echo $resurse[0]['description'];?><br>
 Возраст <?echo $resurse[0]['age'];?><br>
+<br>
+<br>
+Список файлов, которые вы загрузили:
+<br>
+<form action="/MainController/ChangeAvatar" method="POST">
+    <input type="hidden" name="username" value="<?echo $resurse[0]['name'];?>" />
+    <input type="hidden" name="password" value="<?echo $resurse[0]['password'];?>" />
+    <?php
+    foreach ($user_images as $value) {?>
+        <?echo $value['path'];?>
+<input type="radio" name="avatar" value="<?echo $value['path'];?>"><br>
+    <?}?>
+    <input type="submit">
+</form>
+
 <br>
 Заполните или измените информацию о себе:<br>
 <br>
