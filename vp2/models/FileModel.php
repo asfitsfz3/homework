@@ -12,8 +12,8 @@ class FileModel
 
         $sql = "SELECT id FROM users where name=? and password=?";
         $p_query = $db->prepare($sql);
-        $p_query->bindParam(1, $username);
-        $p_query->bindParam(2, $password);
+        $p_query->bindParam(1, htmlentities($username));
+        $p_query->bindParam(2, htmlentities($password));
         if ($p_query->execute()) {
             $result = $p_query->fetchAll();
         }
@@ -23,7 +23,7 @@ class FileModel
         $p_query = $db->prepare($sql);
 
         $p_query->bindParam(1, $result[0][0]);
-        $p_query->bindParam(2, $imagename);
+        $p_query->bindParam(2, htmlentities($imagename));
 
         $p_query->execute();
     }

@@ -11,7 +11,7 @@ class UserModel
 
         $sql = "SELECT count(name) FROM users where name=?";
         $p_query = $db->prepare($sql);
-        $p_query->bindParam(1, $username);
+        $p_query->bindParam(1, htmlentities($username));
 
         if ($p_query->execute()) {
             $result = $p_query->fetchAll();
@@ -25,7 +25,7 @@ class UserModel
 
         $sql = "SELECT password FROM users where name=?";
         $p_query = $db->prepare($sql);
-        $p_query->bindParam(1, $username);
+        $p_query->bindParam(1, htmlentities($username));
 
         if ($p_query->execute()) {
             $result = $p_query->fetchAll();
@@ -44,8 +44,8 @@ class UserModel
         $sql = "INSERT INTO users (name, password) VALUES (?, ?)";
         $p_query = $db->prepare($sql);
 
-        $p_query->bindParam(1, $arr['username']);
-        $p_query->bindParam(2, $arr['password']);
+        $p_query->bindParam(1, htmlentities($arr['username']));
+        $p_query->bindParam(2, htmlentities($arr['password']));
 
         if ($p_query->execute()) {
                 return true;
@@ -61,19 +61,19 @@ class UserModel
         $sql = "SELECT * FROM users where name=? and password=?";
         $p_query = $db->prepare($sql);
 
-        $p_query->bindParam(1, $username);
-        $p_query->bindParam(2, $password);
+        $p_query->bindParam(1, htmlentities($username));
+        $p_query->bindParam(2, htmlentities($password));
 
         if ($p_query->execute()) {
             return $result = $p_query->fetchAll();
         }
     }
 
-    public static function getAllUsersInformation()
+    public static function getAllUsersInformation($param)
     {
         $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM users ORDER BY age " .$param;
         $p_query = $db->prepare($sql);
 
         if ($p_query->execute()) {
@@ -88,7 +88,7 @@ class UserModel
         $sql = "SELECT * FROM images where user_id=?";
         $p_query = $db->prepare($sql);
 
-        $p_query->bindParam(1, $user_id);
+        $p_query->bindParam(1, htmlentities($user_id));
 
         if ($p_query->execute()) {
             return $result = $p_query->fetchAll();
@@ -104,12 +104,12 @@ class UserModel
         $sql = "UPDATE users SET name=?, password=?, description=?, age=? where name=? and password=?";
         $p_query = $db->prepare($sql);
 
-        $p_query->bindParam(1, $arr['new_username']);
-        $p_query->bindParam(2, $arr['new_password']);
-        $p_query->bindParam(3, $arr['description']);
-        $p_query->bindParam(4, $arr['age']);
-        $p_query->bindParam(5, $arr['username']);
-        $p_query->bindParam(6, $arr['password']);
+        $p_query->bindParam(1, htmlentities($arr['new_username']));
+        $p_query->bindParam(2, htmlentities($arr['new_password']));
+        $p_query->bindParam(3, htmlentities($arr['description']));
+        $p_query->bindParam(4, htmlentities($arr['age']));
+        $p_query->bindParam(5, htmlentities($arr['username']));
+        $p_query->bindParam(6, htmlentities($arr['password']));
 
         return $p_query->execute();
     }
@@ -121,9 +121,9 @@ class UserModel
         $sql = "UPDATE users SET avatar=? where name=? and password=?";
         $p_query = $db->prepare($sql);
 
-        $p_query->bindParam(1, $avatar);
-        $p_query->bindParam(2, $username);
-        $p_query->bindParam(3, $password);
+        $p_query->bindParam(1, htmlentities($avatar));
+        $p_query->bindParam(2, htmlentities($username));
+        $p_query->bindParam(3, htmlentities($password));
 
         return $p_query->execute();
     }

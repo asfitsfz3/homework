@@ -70,10 +70,4 @@ class MainController
             require_once dirname(__DIR__, 1) . "/views/ChangeError.php";
         }
     }
-
-    public static function renderUserList()
-    {
-        $resurse = UserModel::getAllUsersInformation();
-        require_once dirname(__DIR__, 1) . "/views/UserList.php";
-    }
 }
