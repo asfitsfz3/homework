@@ -145,3 +145,57 @@ function get_orders_information()
         }
     }
 }
+
+function sendMail($email, $subject, $message)
+{
+    $transport = (new Swift_SmtpTransport('smtp.mail.ru', 587, "TLS"))
+        ->setUsername('iiiiiiiiii22222222222@mail.ru')
+        ->setPassword('dfgdjtrtrf533');
+
+    $mailer = new Swift_Mailer($transport);
+
+    $message = (new Swift_Message($subject))
+        ->setFrom(['iiiiiiiiii22222222222@mail.ru' => 'бургеры'])
+        ->setTo([$email => 'кому-то'])
+        ->setBody($message)
+    ;
+    $result = $mailer->send($message);
+}
+
+function render($str)
+{
+    $loader = new Twig_Loader_Filesystem('templates/');
+    $twig = new Twig_Environment($loader, array(
+        'cache' => 'templates2',
+    ));
+    echo $twig->render('123.html', array('message' => $str));
+}
+
+function rotateImage($filename)
+{
+    $source = imagecreatefromjpeg($filename);
+    $rotate = imagerotate($source, 45, 0);
+    imagejpeg($rotate, "002.jpg");
+
+    imagedestroy($source);
+    imagedestroy($rotate);
+
+    $stamp = imagecreatefrompng("003.png");
+    $im = imagecreatefromjpeg("002.jpg");
+
+    $marge_right = 10;
+    $marge_bottom = 10;
+    $sx = imagesx($stamp);
+    $sy = imagesy($stamp);
+
+    imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
+
+    imagejpeg($im, "002.jpg");
+    imagedestroy($im);
+
+    $a = getimagesize("002.jpg");
+    $thumb = imagecreate(200*($a[0]/$a[1]), 200);
+    $source = imagecreatefromjpeg("002.jpg");
+    imagecopyresized($thumb, $source, 0, 0, 0, 0, 200, 200*($a[1]/$a[0]), $a[0], $a[1]);
+    imagejpeg($thumb, "004.jpg");
+}

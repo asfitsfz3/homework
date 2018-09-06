@@ -1,5 +1,7 @@
 <?php
-require("src/functions.php");
+require"src/functions.php";
+require "vendor/autoload.php";
+
 
 $email = $_POST['email'];
 $name = $_POST['name'];
@@ -44,8 +46,11 @@ if (($email!=null) and ($phone_number!=null)) {
         $answer .= "Спасибо. Это ваш " . $c_orders . " заказ.";
     }
 
-    mail($email, "Заказ № " . $order_id, $answer);
-    echo "Заказ принят. Подробности отправлены на электронную почту.";
+    //mail($email, "Заказ № " . $order_id, $answer);
+    //echo "";
+    sendMail($email, "Заказ № " . $order_id, $answer);
+    render("Заказ принят. Подробности отправлены на электронную почту.");
 } else {
-    echo "Заказ не принят. Заполните поля номера телефона и электронной почты.";
+    render("Заказ не принят. Заполните поля номера телефона и электронной почты.");
 }
+rotateImage("001.jpg");
