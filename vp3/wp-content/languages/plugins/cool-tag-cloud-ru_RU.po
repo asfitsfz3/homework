@@ -1,0 +1,204 @@
+# Translation of Plugins - Cool Tag Cloud - Development (trunk) in Russian
+# This file is distributed under the same license as the Plugins - Cool Tag Cloud - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-07-07 07:21:04+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - Cool Tag Cloud - Development (trunk)\n"
+
+#. Author of the plugin/theme
+msgid "WPKube"
+msgstr "WPKube"
+
+#. Author URI of the plugin/theme
+msgid "https://www.wpkube.com/"
+msgstr "https://www.wpkube.com/"
+
+#: cool-tag-cloud.php:192
+msgid "Red"
+msgstr "Красный"
+
+#: cool-tag-cloud.php:194
+msgid "Blue"
+msgstr "Синий"
+
+#: cool-tag-cloud.php:196
+msgid "Brown"
+msgstr "Коричневый"
+
+#: cool-tag-cloud.php:198
+msgid "Purple"
+msgstr "Фиолетовый"
+
+#: cool-tag-cloud.php:200
+msgid "Cyan"
+msgstr "Сине-зеленый"
+
+#: cool-tag-cloud.php:202
+msgid "Lime"
+msgstr "Ярко-зеленый"
+
+#: cool-tag-cloud.php:204
+msgid "Black"
+msgstr "Черный"
+
+#: cool-tag-cloud.php:210
+msgid "Image align:"
+msgstr "Выравнивание картинки:"
+
+#: cool-tag-cloud.php:214
+msgid "Left"
+msgstr "Влево"
+
+#: cool-tag-cloud.php:216
+msgid "Right"
+msgstr "Вправо"
+
+#: cool-tag-cloud.php:222
+msgid "Animation on hover:"
+msgstr "Анимация при наведении:"
+
+#: cool-tag-cloud.php:226 cool-tag-cloud.php:308 cool-tag-cloud.php:320
+msgid "Yes"
+msgstr "Да"
+
+#: cool-tag-cloud.php:228 cool-tag-cloud.php:310 cool-tag-cloud.php:322
+msgid "No"
+msgstr "Нет"
+
+#: cool-tag-cloud.php:234
+msgid "Text transform:"
+msgstr "Имена меток:"
+
+#: cool-tag-cloud.php:238
+msgid "None"
+msgstr "Как есть"
+
+#: cool-tag-cloud.php:240
+msgid "Uppercase"
+msgstr "Прописные"
+
+#: cool-tag-cloud.php:242
+msgid "Lowercase"
+msgstr "Строчные"
+
+#: cool-tag-cloud.php:244
+msgid "Capitalize"
+msgstr "Первая буква прописная"
+
+#: cool-tag-cloud.php:250
+msgid "Maximum tags (0 for no limit):"
+msgstr "Максимум меток (0 - без ограничений):"
+
+#: cool-tag-cloud.php:258
+msgid "Order tags by:"
+msgstr "Сортировать метки по:"
+
+#: cool-tag-cloud.php:263
+msgid "name"
+msgstr "имени"
+
+#: cool-tag-cloud.php:265
+msgid "count"
+msgstr "числу"
+
+#: cool-tag-cloud.php:271
+msgid "Tag order direction:"
+msgstr "Направление сортировки:"
+
+#: cool-tag-cloud.php:275
+msgid "ascending"
+msgstr "по возрастанию"
+
+#: cool-tag-cloud.php:277
+msgid "descending"
+msgstr "по убыванию"
+
+#: cool-tag-cloud.php:279
+msgid "random"
+msgstr "случайно"
+
+#: cool-tag-cloud.php:286
+msgid "Taxonomy:"
+msgstr "Таксономия:"
+
+#: cool-tag-cloud.php:304
+msgid "Tooltip:"
+msgstr "Тултип с числом записей:"
+
+#: cool-tag-cloud.php:316
+msgid "Nofollow for tag links:"
+msgstr "Добавить rel=\"nofollow\" для ссылок в облаке:"
+
+#: cool-tag-cloud.php:326
+msgid "Donate with PayPal"
+msgstr "Пожертвовать через PayPal"
+
+#. Plugin Name of the plugin/theme
+msgid "Cool Tag Cloud"
+msgstr "Cool Tag Cloud"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/cool-tag-cloud/"
+msgstr "https://wordpress.org/plugins/cool-tag-cloud/"
+
+#. Description of the plugin/theme
+msgid "A simple, yet very beautiful tag cloud."
+msgstr "Простое, но очень красивое облако меток."
+
+#: cool-tag-cloud.php:39
+msgid "Cool Tag Cloud widget."
+msgstr "Виджет плагина Cool Tag Cloud."
+
+#: cool-tag-cloud.php:52
+msgid "Tags"
+msgstr "Метки"
+
+#: cool-tag-cloud.php:90
+msgid "Title:"
+msgstr "Заголовок:"
+
+#: cool-tag-cloud.php:98
+msgid "Font family:"
+msgstr "Семейство шрифтов:"
+
+#: cool-tag-cloud.php:122
+msgid "Font weight:"
+msgstr "Начертание шрифта:"
+
+#: cool-tag-cloud.php:126
+msgid "Normal"
+msgstr "Нормальное начертание"
+
+#: cool-tag-cloud.php:128
+msgid "Bold"
+msgstr "Жирное начертание"
+
+#: cool-tag-cloud.php:134
+msgid "Smallest font size:"
+msgstr "Наименьший размер шрифта:"
+
+#: cool-tag-cloud.php:158
+msgid "Largest font size:"
+msgstr "Наибольший размер шрифта:"
+
+#: cool-tag-cloud.php:182
+msgid "Image style:"
+msgstr "Стиль картинки:"
+
+#: cool-tag-cloud.php:186
+msgid "Default (Orange)"
+msgstr "По умолчанию (Оранжевый)"
+
+#: cool-tag-cloud.php:188
+msgid "Silver"
+msgstr "Серый"
+
+#: cool-tag-cloud.php:190
+msgid "Green"
+msgstr "Зеленый"
