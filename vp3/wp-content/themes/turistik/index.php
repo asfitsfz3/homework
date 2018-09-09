@@ -2,8 +2,10 @@
 <?php
 
 if ($_SERVER['REQUEST_URI']=="/o-servise/") {
-    echo get_page_by_title("О сервисе")->post_content;
-} else {      ?>
+    echo get_page_by_title("О сервисе")->post_content;?>
+
+
+<?} else { ?>
 
 <div class="main-content">
     <div class="content-wrapper">
@@ -15,10 +17,10 @@ if ($_SERVER['REQUEST_URI']=="/o-servise/") {
 
                 <!-- post-mini-->
                 <div class="post-wrap">
-                    <div class="post-thumbnail"><img src="img/post_thumb/thumb_1.jpg" alt="Image поста" class="post-thumbnail__image"></div>
+                    <div class="post-thumbnail"><?the_post_thumbnail();?></div>
                     <div class="post-content">
                         <div class="post-content__post-info">
-                            <div class="post-date">29.07.2016</div>
+                            <div class="post-date"><?echo get_the_date();?></div>
                         </div>
                         <div class="post-content__post-text">
                             <div class="post-title">
@@ -36,16 +38,22 @@ if ($_SERVER['REQUEST_URI']=="/o-servise/") {
 <?php endwhile; else: ?>
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 <?php endif; ?>
+                <?the_posts_pagination()?>
+            </div>
+        </div>
 <?}?>
 
 
-            </div>
-            <div class="pagenavi-post-wrap"><a href="#" class="pagenavi-post__prev-postlink"><i class="icon icon-angle-double-left"></i></a><span class="pagenavi-post__current">1</span><a href="#" class="pagenavi-post__page">2</a><a href="#" class="pagenavi-post__page">3</a><a href="#" class="pagenavi-post__page">...</a><a href="#" class="pagenavi-post__page">10</a><a href="#" class="pagenavi-post__next-postlink"><i class="icon icon-angle-double-right"></i></a></div>
-        </div>
+
 
                 <!-- sidebar-->
         <div class="sidebar">
-            <?php dynamic_sidebar('right-sidebar' );?>
+            <div class="sidebar__sidebar-item">
+                <div class="sidebar-item__content">
+                     <?php dynamic_sidebar('right-sidebar' );?>
+                </div>
+            </div>
         </div>
-
+    </div>
+</div>
 <?php get_footer(); ?>

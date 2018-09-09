@@ -1,5 +1,4 @@
-</div>
-</div>
+
 <footer class="main-footer">
     <div class="content-footer">
         <div class="bottom-menu">
