@@ -30,10 +30,7 @@
         </div>
         <div class="bottom-header">
             <div class="search-form-wrap">
-                <form class="search-form">
-                    <input type="text" placeholder="Поиск..." class="search-form__input">
-                    <button class="search-form__btn-search"><i class="icon icon-search"></i></button>
-                </form>
+                <?php get_search_form(); ?>
             </div>
         </div>
     </header>
