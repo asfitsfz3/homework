@@ -65,7 +65,9 @@ if ($_SERVER['REQUEST_URI']=="/o-servise/") {
 
                        </ul>
                      </div>
-                </div>
+                <?php dynamic_sidebar('right-sidebar' );?>
+
+
             </div>
         </div>
 
