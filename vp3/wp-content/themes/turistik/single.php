@@ -50,7 +50,7 @@
     <div class="sidebar">
         <div class="sidebar__sidebar-item">
             <div class="sidebar-item__content">
-                <?php dynamic_sidebar('right-sidebar' );?>
+                <?php //dynamic_sidebar('right-sidebar' );?>
             </div>
         </div>
     </div>
