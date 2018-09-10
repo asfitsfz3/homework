@@ -5,6 +5,8 @@
     <title></title>
 </head>
 <body>
+<a href="/MainController/renderAdminPanel">Панель администратора</a><br>
+<br>
 <a href="/UploadFileController/renderUserList">Посмотреть список зарегистрированных пользователей</a><br>
 <br>
 <br>
