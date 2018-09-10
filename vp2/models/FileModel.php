@@ -8,7 +8,7 @@ class FileModel
     public static function registerImage($username, $password, $imagename)
     {
         $ret = "";
-        $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
+        /*$db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
         $sql = "SELECT id FROM users where name=? and password=?";
         $p_query = $db->prepare($sql);
@@ -25,6 +25,22 @@ class FileModel
         $p_query->bindParam(1, $result[0][0]);
         $p_query->bindParam(2, htmlentities($imagename));
 
-        $p_query->execute();
+        $p_query->execute()*/
+
+        $username = htmlentities($username);
+        $password = htmlentities($password);
+        $imagename = htmlentities($imagename);
+
+        $result = UserTableModel::where('name', '=', $username)
+            ->where('password', '=', $password)
+            ->get();
+        $r = $result->toArray()[0]['id'];
+
+        $img = new ImageTableModel();
+
+        $img->path = $imagename;
+        $img->user_id = (int)$r;
+
+        $img->save();
     }
 }

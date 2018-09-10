@@ -18,6 +18,8 @@ class UserModel
             $result = $p_query->fetchAll();
             return $result[0][0];
         }*/
+        $username = htmlentities($username);
+
         $res = UserTableModel::where('name', '=', $username)->get()->count();
 
         //$result = $res->toArray();
@@ -41,6 +43,10 @@ class UserModel
                 return false;
             }
         }*/
+
+        $username = htmlentities($username);
+        $password = htmlentities($password);
+
         $res = UserTableModel::where('name', '=', $username)->get();
 
         $result = $res->toArray();
@@ -54,7 +60,7 @@ class UserModel
 
     public static function registerUser(array $arr)
     {
-        $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
+        /*$db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
         $sql = "INSERT INTO users (name, password) VALUES (?, ?)";
         $p_query = $db->prepare($sql);
@@ -66,7 +72,17 @@ class UserModel
                 return true;
         } else {
                 return false;
-        }
+        }*/
+
+        $arr['username'] = htmlentities($arr['username']);
+        $arr['password'] = htmlentities($arr['password']);
+
+        $user = new UserTableModel();
+
+        $user->name = $arr['username'];
+        $user->password = $arr['password'];
+
+        $user->save();
     }
 
     public static function getFullUserInformation($username, $password)
@@ -82,6 +98,9 @@ class UserModel
         if ($p_query->execute()) {
             return $result = $p_query->fetchAll();
         }*/
+
+        $username = htmlentities($username);
+        $password = htmlentities($password);
 
         $result = UserTableModel::where('name', '=', $username)
             ->where('password', '=', $password)
@@ -123,6 +142,7 @@ class UserModel
         } else {
             return false;
         }*/
+        $user_id = htmlentities($user_id);
 
         $result = ImageTableModel::where('user_id', '=', $user_id)->get();
         return $result->toArray();
@@ -145,6 +165,13 @@ class UserModel
 
         return $p_query->execute();*/
 
+        $arr['new_username'] = htmlentities($arr['new_username']);
+        $arr['new_password'] = htmlentities($arr['new_password']);
+        $arr['description'] = htmlentities($arr['description']);
+        $arr['age'] = htmlentities($arr['age']);
+        $arr['username'] = htmlentities($arr['username']);
+        $arr['password'] = htmlentities($arr['password']);
+        $arr['email'] = htmlentities($arr['email']);
 
         $result = UserTableModel::where('name', '=', $arr['username'])
             ->where('password', '=', $arr['password'])
@@ -162,7 +189,7 @@ class UserModel
 
     public static function changeUserAvatar($username, $password, $avatar)
     {
-        $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
+       /* $db = new PDO("mysql:host=localhost;dbname=vp2", "root", "");
 
         $sql = "UPDATE users SET avatar=? where name=? and password=?";
         $p_query = $db->prepare($sql);
@@ -171,6 +198,20 @@ class UserModel
         $p_query->bindParam(2, htmlentities($username));
         $p_query->bindParam(3, htmlentities($password));
 
-        return $p_query->execute();
+        return $p_query->execute();*/
+
+        $username = htmlentities($username);
+        $password = htmlentities($password);
+        $avatar = htmlentities($avatar);
+
+        $result = UserTableModel::where('name', '=', $username)
+            ->where('password', '=', $password)
+            ->get();
+        $r = $result->toArray()[0]['id'];
+
+        $model = UserTableModel::find((int)$r);
+        $model->avatar = $avatar;
+
+        $model->save();
     }
 }
