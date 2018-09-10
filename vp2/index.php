@@ -1,8 +1,12 @@
 <?php
 namespace app;
 
+
+require "vendor/autoload.php";
 include_once "core/core.php";
+
 CoreAutoload::load();
+ConfigModel::configDb();
 
 $routes = explode('/', $_SERVER['REQUEST_URI']);
 

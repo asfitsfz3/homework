@@ -13,7 +13,8 @@
 Имя: <?echo $resurse[0]['name'];?><br>
 Пароль: **********<br>
 Описание: <?echo $resurse[0]['description'];?><br>
-Возраст <?echo $resurse[0]['age'];?><br>
+Возраст: <?echo $resurse[0]['age'];?><br>
+Электронная почта: <?echo $resurse[0]['email'];?><br>
 <br>
 --------------------------------------
 <br>
@@ -41,7 +42,8 @@
     Новое имя: <input type="text" name="new_username" value=""><br>
     Новый пароль: <input type="text" name="new_password" value=""><br>
     Описание: <input type="text" name="description" value=""><br>
-    Возраст: <input type="text" name="age" value=""><br><br>
+    Возраст: <input type="text" name="age" value=""><br>
+    Электронная почта: <input type="text" name="email" value=""><br><br>
     Введите старое имя и пароль для подтверждения изменений:<br><br>
     Старое имя: <input type="text" name="username" value=""><br>
     Старый пароль: <input type="password" name="password" value=""><br>
