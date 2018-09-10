@@ -8,6 +8,9 @@ include_once "core/core.php";
 CoreAutoload::load();
 ConfigModel::configDb();
 
+ConfigModel::migrationExample();
+
+
 $routes = explode('/', $_SERVER['REQUEST_URI']);
 
 $controller_name = "MainController";
