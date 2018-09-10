@@ -34,7 +34,11 @@ class MainController
     {
         $u = $_POST['username'];
         $p = $_POST['password'];
-        require_once dirname(__DIR__, 1) . "/views/ConfigureUserPage.php";
+        if (($u!=null) and ($p!=null) and (UserModel::CheckPassword($_POST['username'], $_POST['password']))) {
+            require_once dirname(__DIR__, 1) . "/views/ConfigureUserPage.php";
+        } else {
+            require_once dirname(__DIR__, 1) . "/views/ChangeError.php";
+        }
     }
 
     public static function registered()
