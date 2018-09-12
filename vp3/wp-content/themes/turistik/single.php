@@ -19,6 +19,7 @@
                 $prev_post = get_adjacent_post();
                 ?>
                 <div class="article-pagination">
+                    <?if ($prev_post->post_title!=null) {?>
                     <div class="article-pagination__block pagination-prev-left"><a href="<?echo get_permalink($prev_post->ID);?>" class="article-pagination__link"><i class="icon icon-angle-double-left"></i>Предыдущая статья</a>
                         <div class="wrap-pagination-preview pagination-prev-left">
                             <div class="preview-article__img"><img src="<?echo get_the_post_thumbnail_url($prev_post->ID);?>" class="preview-article__image"></div>
@@ -28,7 +29,18 @@
                             </div>
                         </div>
                     </div>
-
+                    <? } else { ?>
+                    <div class="article-pagination__block pagination-prev-left">
+                        <div class="wrap-pagination-preview pagination-prev-left">
+                            <div class="preview-article__img"></div>
+                            <div class="preview-article__content">
+                                <div class="preview-article__info"></div>
+                                <div class="preview-article__text"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?}?>
+                    <?if ($next_post->post_title!=null) {?>
                     <div class="article-pagination__block pagination-prev-right"><a href="<?echo get_permalink($next_post->ID);?>" class="article-pagination__link">Сдедующая статья<i class="icon icon-angle-double-right"></i></a>
                         <div class="wrap-pagination-preview pagination-prev-right">
                             <div class="preview-article__img"><img src="<?echo get_the_post_thumbnail_url($next_post->ID);?>" class="preview-article__image"></div>
@@ -38,6 +50,7 @@
                             </div>
                         </div>
                     </div>
+                    <?}?>
                 </div>
             </div>
 
@@ -47,13 +60,30 @@
 
 
     <!-- sidebar-->
+    <!-- sidebar-->
+
     <div class="sidebar">
         <div class="sidebar__sidebar-item">
+            <div class="sidebar-item__title">Теги</div>
             <div class="sidebar-item__content">
-                <?php dynamic_sidebar('right-sidebar' );?>
+                <ul class="tags-list">
+
+
+                    <?foreach (get_tags() as $value) { ?>
+                        <li class="tags-list__item"><a href="<?echo get_tag_link($value->term_id);?>" class="tags-list__item__link">
+                                <?echo $value->name;?>
+                            </a></li>
+                    <? } ?>
+
+
+                </ul>
             </div>
+
+            <?php get_calendar( $initial ); ?>
         </div>
     </div>
+
     </div>
+
     </div>
 <?php get_footer(); ?>

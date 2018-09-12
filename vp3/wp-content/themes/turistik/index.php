@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_URI']=="/o-servise/") {
             <div class="posts-list">
 
 
+
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
                 <!-- post-mini-->
@@ -21,14 +22,21 @@ if ($_SERVER['REQUEST_URI']=="/o-servise/") {
                     <div class="post-thumbnail"><?the_post_thumbnail();?></div>
                     <div class="post-content">
                         <div class="post-content__post-info">
-                            <div class="post-date"><?the_date();?></div>
+                            <div class="post-date"><?echo get_the_date('d.m.Y');?></div>
                         </div>
                         <div class="post-content__post-text">
                             <div class="post-title">
                                 <?php the_title(); ?>
                             </div>
                             <p>
-                                <?php the_excerpt(); ?>
+                                <?php
+                                if (get_the_category()[0]->name=='Новости') {
+                                    the_excerpt();
+                                } elseif (get_the_category()[0]->name=='Акции') {
+                                    echo get_post_meta(get_the_ID(), 'description', true);
+                                }
+
+                                 ?>
                             </p>
                         </div>
                         <div class="post-content__post-control"><a href="<?php the_permalink(); ?>" class="btn-read-post">Читать далее >></a></div>
@@ -39,7 +47,12 @@ if ($_SERVER['REQUEST_URI']=="/o-servise/") {
 <?php endwhile; else: ?>
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 <?php endif; ?>
-                <?the_posts_pagination()?>
+
+                <div class="post-content__post-control">
+                <div class="btn-read-post">
+                    <?echo paginate_links();?>
+                </div>
+                </div>
             </div>
         </div>
 <?}?>
@@ -65,9 +78,8 @@ if ($_SERVER['REQUEST_URI']=="/o-servise/") {
 
                        </ul>
                      </div>
-                <?php dynamic_sidebar('right-sidebar' );?>
 
-
+                <?php get_calendar($initial); ?>
             </div>
         </div>
 

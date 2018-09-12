@@ -3,10 +3,10 @@
     <div class="content-footer">
         <div class="bottom-menu">
             <ul class="b-menu__list">
-                <li class="b-menu__list__item"><a href="#" class="b-menu__list__item__link">Главная</a></li>
-                <li class="b-menu__list__item"><a href="#" class="b-menu__list__item__link">Полезная информация</a></li>
-                <li class="b-menu__list__item"><a href="#" class="b-menu__list__item__link">Последние акции</a></li>
-                <li class="b-menu__list__item"><a href="#" class="b-menu__list__item__link">О сервисе</a></li>
+                <?  $menu = wp_get_nav_menu_items("Меню");
+                foreach ($menu as $value) {?>
+                    <li class="b-menu__list__item"><a href="<? echo $value->url;?>" class="b-menu__list__item__link"><? echo $value->title;?></a></li>
+                <?}?>
             </ul>
         </div>
         <div class="copyright-wrap">
