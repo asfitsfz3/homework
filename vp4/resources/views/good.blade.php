@@ -12,7 +12,7 @@
 <body>
 <div class="main-wrapper">
     <header class="main-header">
-        <div class="logotype-container"><a href="#" class="logotype-link"><img src="img/logo.png" alt="Логотип"></a></div>
+        <div class="logotype-container"><a href="/" class="logotype-link"><img src="/resources/views/img/logo.png" alt="Логотип"></a></div>
         <nav class="main-navigation">
             <ul class="nav-list">
                 <li class="nav-list__item"><a href="#" class="nav-list__item__link">Главная</a></li>
@@ -84,7 +84,7 @@
         <div class="main-content">
             <div class="content-top">
                 <div class="content-top__text">Купить игры неборого без регистрации смс с торента, получить компкт диск, скачать Steam игры после оплаты</div>
-                <div class="image-container"><img src="img/slider.png" alt="Image" class="image-main"></div>
+                <div class="image-container"><img src="/resources/views/img/slider.png" alt="Image" class="image-main"></div>
             </div>
             <div class="content-middle">
                 <div class="content-head__container">
@@ -101,6 +101,26 @@
                     </div>
                 </div>
 
+                <div class="content-main__container">
+                    <div class="product-container">
+                        <div class="product-container__image-wrap"><img src="/resources/views/img/cover/{{ $arr['good_pic'] }}" class="image-wrap__image-product"></div>
+                        <div class="product-container__content-text">
+                            <div class="product-container__content-text__title">{{ $arr['good_name'] }}</div>
+                            <div class="product-container__content-text__price">
+                                <div class="product-container__content-text__price__value">
+                                    Цена: <b>{{ $arr['good_price'] }}</b>
+                                    руб
+                                </div><a href="#" class="btn btn-blue" onclick="message()">Купить</a>
+                            </div>
+                            <div class="product-container__content-text__description">
+                                {{ $arr['good_description'] }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
             <div class="content-bottom">
                 <div class="line"></div>
@@ -111,21 +131,17 @@
                 </div>
                 <div class="content-main__container">
                     <div class="products-columns">
-                        <div class="products-columns__item">
-                            <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">The Witcher 3: Wild Hunt</a></div>
-                            <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-1.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                            <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                        </div>
-                        <div class="products-columns__item">
-                            <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">Overwatch</a></div>
-                            <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-2.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                            <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                        </div>
-                        <div class="products-columns__item">
-                            <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">Deus Ex: Mankind Divided</a></div>
-                            <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-3.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                            <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                        </div>
+                        @foreach ($arr['goods'] as $value)
+
+
+                            <div class="products-category__list__item">
+                                <div class="products-category__list__item__title-product"><a href="good/?id={{ $value['good_id'] }}">{{ $value['name'] }}</a></div>
+                                <div class="products-category__list__item__thumbnail"><a href="good/?id={{ $value['good_id'] }}" class="products-category__list__item__thumbnail__link"><img src="/resources/views/img/cover/{{ $value['photo_id'] }}" alt="Preview-image"></a></div>
+                                <div class="products-category__list__item__description"><span class="products-price">{{ $value['price'] }} руб</span><a href="#" class="btn btn-blue">Купить</a></div>
+                            </div>
+
+
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -141,7 +157,7 @@
                         <div class="item-product__thumbnail"><a href="#" class="item-product__thumbnail__link"><img src="img/cover/game-1.jpg" alt="Preview-image" class="item-product__thumbnail__link__img"></a></div>
                         <div class="item-product__description">
                             <div class="item-product__description__products-price"><span class="products-price">400 руб</span></div>
-                            <div class="item-product__description__btn-block"><a href="#" class="btn btn-blue">Купить</a></div>
+                            <div class="item-product__description__btn-block"><a href="#" class="btn btn-blue" >Купить</a></div>
                         </div>
                     </div>
                 </div>
@@ -168,6 +184,70 @@
         </div>
     </footer>
 </div>
-<script src="js/main.js"></script>
+
+
+
+
+
+
+<script>
+    function message() {
+        function CreateRequest()
+        {
+            var Request = false;
+
+            if (window.XMLHttpRequest)
+            {
+                //Gecko-совместимые браузеры, Safari, Konqueror
+                Request = new XMLHttpRequest();
+            }
+            else if (window.ActiveXObject)
+            {
+                //Internet explorer
+                try
+                {
+                    Request = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (CatchException)
+                {
+                    Request = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+            }
+
+            if (!Request)
+            {
+                alert("Невозможно создать XMLHttpRequest");
+            }
+
+            return Request;
+        }
+
+
+
+
+
+
+
+        if ('{{$arr['auth']}}'=='yes') {
+        var name=prompt("Для связи с менеджером оставьте своё имя", "{{$arr['auth_name']}}");
+        var email=prompt("Для связи с менеджером оставьте свой электронный адрес", "{{$arr['auth_email']}}");
+        alert("Ваш заказ принят.");
+
+        var Request = CreateRequest();
+        Request.open("GET", "/public/order/?e="+email+"&n="+name, true);
+        //alert("order/?e="+email+"&n="+name);
+        Request.send(null);
+    } else {
+        alert("Авторизуйтесь, пожалуйста.");
+    }
+
+    }
+</script>
+
+
+
+
+
+
 </body>
 </html>

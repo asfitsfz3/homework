@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Good;
+use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 
 class Start extends Controller
@@ -12,6 +13,7 @@ class Start extends Controller
     {
         $cat = Category::all();
         $good = Good::all();
+
         $arr = array (
             'goods' => $good,
             'categories' => $cat

@@ -12,25 +12,34 @@ class ShowCategory extends Controller
     {
         $cat = Category::all();
         $arr = array (
-            'category_name' => '123',
+            'category_name' => '',
+            'category_id' => '',
             'goods' => array(),
             'categories' => $cat
         );
+        if (empty($_GET['id'])) {
+            $_GET['id'] = "1";
+        }
+
         foreach ($cat as $value) {
-            if ((!empty($value)) and ($value['category_id']==$_GET['id'])) {
+            if ((!empty($value)) and ($value['category_id'] == $_GET['id'])) {
                 $arr['category_name'] = $value['name'];
+                $arr['category_id'] = $value['category_id'];
                 break;
             } else {
-                $arr['category_name'] = $cat[0]['name'];
+                    $arr['category_name'] = $cat[0]['name'];
+                    $arr['category_id'] = $cat[0]['category_id'];
             }
         }
-        //$arr['goods'] = Good::all();
+
 
         foreach (Good::all() as $value) {
-            if ($value['category_id']==$_GET['id']) {
+            if ($value['category_id']==$arr['category_id']) {
                 array_push($arr['goods'], $value);
             }
         }
+
+
         return view('category')->with('arr', $arr);
     }
 }
