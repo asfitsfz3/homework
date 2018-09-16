@@ -146,7 +146,7 @@ function get_orders_information()
     }
 }
 
-function sendMail($email, $subject, $message)
+function sendMail($email, $ subject, $message)
 {
     $transport = (new Swift_SmtpTransport('smtp.mail.ru', 587, "TLS"))
         ->setUsername('iiiiiiiiii22222222222@mail.ru')

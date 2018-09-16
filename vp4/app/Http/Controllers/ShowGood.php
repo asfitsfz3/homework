@@ -21,6 +21,7 @@ class ShowGood extends Controller
             'category_name' => "",
             'good_name' => "",
             'good_pic' => "",
+            'good_id' => "",
             'good_price' => "",
             'good_description' => "",
             'category_id' => "",
@@ -47,6 +48,7 @@ class ShowGood extends Controller
                 $arr['good_pic'] = $value['photo_id'];
                 $arr['good_price'] = $value['price'];
                 $arr['good_description'] = $value['description'];
+                $arr['good_id'] = $value['good_id'];
                 $arr['category_id'] = $value['category_id'];
                 break;
             } else {
