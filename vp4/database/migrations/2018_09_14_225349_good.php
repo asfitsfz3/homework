@@ -18,7 +18,7 @@ class Good extends Migration
             $table->string('name');
             $table->string('category_id');
             $table->integer('price');
-            $table->integer('photo_id');
+            $table->string('photo_id');
             $table->string('description');
             $table->rememberToken();
             $table->timestamps();

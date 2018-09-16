@@ -64,8 +64,8 @@
                             <div class="sidebar-item__content">
                                 <ul class="sidebar-category">
 
-                                    @foreach ($res as $value)
-                                    <li class="sidebar-category__item"><a href="category/?id={{ $value['category_id'] }}" class="sidebar-category__item__link">{{ $value['name'] }}</a></li>
+                                    @foreach ($arr['categories'] as $value)
+                                        <li class="sidebar-category__item"><a href="category/?id={{ $value['category_id'] }}" class="sidebar-category__item__link">{{ $value['name'] }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -111,36 +111,17 @@
                             </div>
                             <div class="content-main__container">
                                 <div class="products-columns">
-                                    <div class="products-columns__item">
-                                        <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">The Witcher 3: Wild Hunt</a></div>
-                                        <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-1.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                        <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                                    </div>
-                                    <div class="products-columns__item">
-                                        <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">Overwatch</a></div>
-                                        <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-2.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                        <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                                    </div>
-                                    <div class="products-columns__item">
-                                        <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">Deus Ex: Mankind Divided</a></div>
-                                        <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-3.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                        <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                                    </div>
-                                    <div class="products-columns__item">
-                                        <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">World of WarCraft</a></div>
-                                        <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-4.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                        <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                                    </div>
-                                    <div class="products-columns__item">
-                                        <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">Call of Duty: Black ops II</a></div>
-                                        <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-5.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                        <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                                    </div>
-                                    <div class="products-columns__item">
-                                        <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">Batman</a></div>
-                                        <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-6.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                        <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
-                                    </div>
+                                    @foreach ($arr['goods'] as $value)
+
+
+                                        <div class="products-category__list__item">
+                                            <div class="products-category__list__item__title-product"><a href="good/?id={{ $value['good_id'] }}">{{ $value['name'] }}</a></div>
+                                            <div class="products-category__list__item__thumbnail"><a href="good/?id={{ $value['good_id'] }}" class="products-category__list__item__thumbnail__link"><img src="/resources/views/img/cover/{{ $value['photo_id'] }}" alt="Preview-image"></a></div>
+                                            <div class="products-category__list__item__description"><span class="products-price">{{ $value['price'] }} руб</span><a href="#" class="btn btn-blue">Купить</a></div>
+                                        </div>
+
+
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="content-footer__container">
