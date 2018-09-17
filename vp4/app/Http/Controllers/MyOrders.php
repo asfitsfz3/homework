@@ -35,6 +35,8 @@ class MyOrders extends Controller
                 }
             }
             return view('myorders')->with('arr', $arr);
+        } else {
+            return view('notauth');
         }
     }
 }
