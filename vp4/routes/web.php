@@ -19,3 +19,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/category', 'ShowCategory@showCategory');
 Route::get('/good', 'ShowGood@showGood');
 Route::get('/order', 'MakeOrder@makeOrder');
+Route::get('/cabinet', 'Cabinet@showCabinet');
+Route::get('/fast_logout', 'Cabinet@showLogout');

@@ -35,7 +35,7 @@
 
                 @auth
                     <div class="authorization-block">
-                        <a href="{{ url('/home') }}" class="authorization-block__link">Личный кабинет</a>
+                        <a href="{{ url('/cabinet') }}" class="authorization-block__link">Личный кабинет</a>
                     </div>
                 @else
                     <div class="authorization-block">
@@ -167,6 +167,6 @@
         </div>
     </footer>
 </div>
-<script src="js/main.js"></script>
+
 </body>
 </html>

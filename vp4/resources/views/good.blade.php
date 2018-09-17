@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/media.css">
 </head>
 <body>
+
 <div class="main-wrapper">
     <header class="main-header">
         <div class="logotype-container"><a href="/" class="logotype-link"><img src="/img/logo.png" alt="Логотип"></a></div>
@@ -36,7 +37,7 @@
 
                 @auth
                     <div class="authorization-block">
-                        <a href="{{ url('/home') }}" class="authorization-block__link">Личный кабинет</a>
+                        <a href="{{ url('/cabinet') }}" class="authorization-block__link">Личный кабинет</a>
                     </div>
                 @else
                     <div class="authorization-block">
@@ -186,12 +187,9 @@
 </div>
 
 
-
-
-
-
 <script>
-    function message() {
+    function message()
+    {
         function CreateRequest()
         {
             var Request = false;
@@ -228,25 +226,23 @@
 
 
 
-        if ('{{$arr['auth']}}'=='yes') {
-        var name = prompt("Для связи с менеджером оставьте своё имя", "{{$arr['auth_name']}}");
-        var email = prompt("Для связи с менеджером оставьте свой электронный адрес", "{{$arr['auth_email']}}");
-        var good = "{{ $arr['good_id'] }}";
-        alert("Ваш заказ принят.");
+        if ("{{$arr['auth']}}"=='yes') {
+            var name = prompt("Для связи с менеджером оставьте своё имя", "{{$arr['auth_name']}}");
+            var email = prompt("Для связи с менеджером оставьте свой электронный адрес", "{{$arr['auth_email']}}");
+            var good = "{{ $arr['good_id'] }}";
+            alert("Ваш заказ принят.");
 
-        var Request = CreateRequest();
-        Request.open("GET", "/order/?e="+email+"&n="+name+"&g="+good, true);
-        //alert("order/?e="+email+"&n="+name);
-        Request.send(null);
-    } else {
-        alert("Авторизуйтесь, пожалуйста.");
+            var Request = CreateRequest();
+            Request.open("GET", "/order/?e="+email+"&n="+name+"&g="+good, true);
+            //alert("order/?e="+email+"&n="+name);
+            Request.send(null);
+        } else {
+            alert("Авторизуйтесь, пожалуйста.");
+        }
+
     }
 
-    }
 </script>
-
-
-
 
 
 
