@@ -21,3 +21,5 @@ Route::get('/good', 'ShowGood@showGood');
 Route::get('/order', 'MakeOrder@makeOrder');
 Route::get('/cabinet', 'Cabinet@showCabinet');
 Route::get('/fast_logout', 'Cabinet@showLogout');
+Route::get('/createcat', 'AdminActions@createCategory');
+Route::get('/deletecat', 'AdminActions@deleteCategory');
