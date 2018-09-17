@@ -14,6 +14,7 @@ class ShowGood extends Controller
         $cat = Category::all();
         $good = Good::all();
 
+        $random_good = $good[rand(1, count($good)-1)];
 
         $arr = array (
             'goods' => $good,
@@ -27,7 +28,8 @@ class ShowGood extends Controller
             'category_id' => "",
             'auth' => "no",
             'auth_email' => "",
-            'auth_name' => ""
+            'auth_name' => "",
+            'random_good' => $random_good
         );
 
         if (Auth::check()) {

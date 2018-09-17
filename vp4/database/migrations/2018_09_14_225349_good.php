@@ -40,17 +40,20 @@ class Good extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::create('admin_email', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('good');
         Schema::dropIfExists('category');
         Schema::dropIfExists('order');
+        Schema::dropIfExists('admin_email');
     }
 }

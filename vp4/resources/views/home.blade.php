@@ -14,8 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
-
+                    Вы залогинились<br>
+                        <a href="/">Вернуться на начальную страницу</a><br>
                 </div>
             </div>
         </div>

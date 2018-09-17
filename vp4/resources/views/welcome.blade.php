@@ -18,10 +18,10 @@
                     <div class="logotype-container"><a href="/" class="logotype-link"><img src="/img/logo.png" alt="Логотип"></a></div>
                     <nav class="main-navigation">
                         <ul class="nav-list">
-                            <li class="nav-list__item"><a href="#" class="nav-list__item__link">Главная</a></li>
-                            <li class="nav-list__item"><a href="#" class="nav-list__item__link">Мои заказы</a></li>
-                            <li class="nav-list__item"><a href="#" class="nav-list__item__link">Новости</a></li>
-                            <li class="nav-list__item"><a href="#" class="nav-list__item__link">О компании</a></li>
+                            <li class="nav-list__item"><a href="/" class="nav-list__item__link">Главная</a></li>
+                            <li class="nav-list__item"><a href="/myorders" class="nav-list__item__link">Мои заказы</a></li>
+                            <li class="nav-list__item"><a href="/news" class="nav-list__item__link">Новости</a></li>
+                            <li class="nav-list__item"><a href="/about" class="nav-list__item__link">О компании</a></li>
                         </ul>
                     </nav>
                     <div class="header-contact">
@@ -102,9 +102,9 @@
                                 </div>
                                 <div class="content-head__search-block">
                                     <div class="search-container">
-                                        <form class="search-container__form">
-                                            <input type="text" class="search-container__form__input">
-                                            <button class="search-container__form__btn">search</button>
+                                        <form class="search-container__form" action="{{ url('/search') }}" method="GET">
+                                            <input type="text" name="word" class="search-container__form__input">
+                                            <button type="submit" class="search-container__form__btn">search</button>
                                         </form>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                         <div class="products-category__list__item">
                                             <div class="products-category__list__item__title-product"><a href="good/?id={{ $value['good_id'] }}">{{ $value['name'] }}</a></div>
                                             <div class="products-category__list__item__thumbnail"><a href="good/?id={{ $value['good_id'] }}" class="products-category__list__item__thumbnail__link"><img src="/img/cover/{{ $value['photo_id'] }}" alt="Preview-image"></a></div>
-                                            <div class="products-category__list__item__description"><span class="products-price">{{ $value['price'] }} руб</span><a href="#" class="btn btn-blue">Купить</a></div>
+                                            <div class="products-category__list__item__description"><span class="products-price">{{ $value['price'] }} руб</span><a href="good/?id={{ $value['good_id'] }}" class="btn btn-blue">Купить</a></div>
                                         </div>
 
 
@@ -145,11 +145,11 @@
                             <div class="random-product-container__head">Случайный товар</div>
                             <div class="random-product-container__content">
                                 <div class="item-product">
-                                    <div class="item-product__title-product"><a href="#" class="item-product__title-product__link">The Witcher 3: Wild Hunt</a></div>
-                                    <div class="item-product__thumbnail"><a href="#" class="item-product__thumbnail__link"><img src="img/cover/game-1.jpg" alt="Preview-image" class="item-product__thumbnail__link__img"></a></div>
+                                    <div class="item-product__title-product"><a href="good/?id={{ $arr['random_good']['good_id'] }}" class="item-product__title-product__link">{{ $arr['random_good']['name'] }}</a></div>
+                                    <div class="item-product__thumbnail"><a href="good/?id={{ $arr['random_good']['good_id'] }}" class="item-product__thumbnail__link"><img src="/img/cover/{{ $arr['random_good']['photo_id'] }}" alt="Preview-image" class="item-product__thumbnail__link__img"></a></div>
                                     <div class="item-product__description">
-                                        <div class="item-product__description__products-price"><span class="products-price">400 руб</span></div>
-                                        <div class="item-product__description__btn-block"><a href="#" class="btn btn-blue">Купить</a></div>
+                                        <div class="item-product__description__products-price"><span class="products-price">{{ $arr['random_good']['price'] }}</span></div>
+                                        <div class="item-product__description__btn-block"><a href="good/?id={{ $arr['random_good']['good_id'] }}" class="btn btn-blue">Купить</a></div>
                                     </div>
                                 </div>
                             </div>

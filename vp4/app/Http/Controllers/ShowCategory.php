@@ -11,11 +11,14 @@ class ShowCategory extends Controller
     public function showCategory()
     {
         $cat = Category::all();
+        $good = Good::all();
+        $random_good = $good[rand(1, count($good)-1)];
         $arr = array (
             'category_name' => '',
             'category_id' => '',
             'goods' => array(),
-            'categories' => $cat
+            'categories' => $cat,
+            'random_good' => $random_good
         );
         if (empty($_GET['id'])) {
             $_GET['id'] = "1";

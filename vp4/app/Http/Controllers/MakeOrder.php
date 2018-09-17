@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\OrderMail;
 use Illuminate\Http\Request;
 use App\Order;
+use App\admin_email;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -27,7 +28,8 @@ class MakeOrder extends Controller
                 'id' => $ord->good_id,
                 'name' => $ord->name
             );
-            Mail::to('asfitsfz3@yandex.ru')->send(new OrderMail($par));
+            $em = admin_email::first();
+            Mail::to($em['name'])->send(new OrderMail($par));
 
         }
     }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="ru">
 <head>
-    <title>category - ГеймсМаркет</title>
+    <title>1product - ГеймсМаркет</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/media.css">
 </head>
 <body>
+
 <div class="main-wrapper">
     <header class="main-header">
         <div class="logotype-container"><a href="/" class="logotype-link"><img src="/img/logo.png" alt="Логотип"></a></div>
@@ -18,7 +19,7 @@
                 <li class="nav-list__item"><a href="/" class="nav-list__item__link">Главная</a></li>
                 <li class="nav-list__item"><a href="/myorders" class="nav-list__item__link">Мои заказы</a></li>
                 <li class="nav-list__item"><a href="/news" class="nav-list__item__link">Новости</a></li>
-                <li class="nav-list__item"><a href="/about" class="nav-list__item__link">О компании</a></li>          </ul>
+                <li class="nav-list__item"><a href="/about" class="nav-list__item__link">О компании</a></li>           </ul>
         </nav>
         <div class="header-contact">
             <div class="header-contact__phone"><a href="#" class="header-contact__phone-link">Телефон: 33-333-33</a></div>
@@ -30,6 +31,7 @@
                     <div class="payment-basket__status__basket"><span class="payment-basket__status__basket-value">0</span><span class="payment-basket__status__basket-value-descr">товаров</span></div>
                 </div>
             </div>
+
             @if (Route::has('login'))
 
                 @auth
@@ -44,6 +46,7 @@
                 @endauth
 
             @endif
+
         </div>
     </header>
     <div class="middle">
@@ -54,7 +57,8 @@
                     <ul class="sidebar-category">
                         @foreach ($arr['categories'] as $value)
                             <li class="sidebar-category__item"><a href="category/?id={{ $value['category_id'] }}" class="sidebar-category__item__link">{{ $value['name'] }}</a></li>
-                        @endforeach                </ul>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
             <div class="sidebar-item">
@@ -80,13 +84,14 @@
         <div class="main-content">
             <div class="content-top">
                 <div class="content-top__text">Купить игры неборого без регистрации смс с торента, получить компкт диск, скачать Steam игры после оплаты</div>
-                <div class="slider"><img src="/img/slider.png" alt="Image" class="image-main"></div>
+                <div class="slider"><img src="img/slider.png" alt="Image" class="image-main"></div>
             </div>
             <div class="content-middle">
                 <div class="content-head__container">
                     <div class="content-head__title-wrap">
-                        <div class="content-head__title-wrap__title bcg-title">Игры в разделе {{ $arr['category_name'] }}</div>
+                        <div class="content-head__title-wrap__title bcg-title">О магазине</div>
                     </div>
+
                     <div class="content-head__search-block">
                         <div class="search-container">
                             <form class="search-container__form" action="{{ url('/search') }}" method="GET">
@@ -97,40 +102,74 @@
                     </div>
                 </div>
                 <div class="content-main__container">
-                    <div class="products-category__list">
-
+                    <div class="news-block content-text"><img src="img/cover/game-3.jpg" alt="Image" class="alignleft img-news">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        </p>
+                        <p>
+                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            exercitation ullamco laboris nisi ut aliquip
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-bottom">
+                <div class="line"></div>
+                <div class="content-head__container">
+                    <div class="content-head__title-wrap">
+                        <div class="content-head__title-wrap__title bcg-title">Посмотрите наши товары</div>
+                    </div>
+                </div>
+                <div class="content-main__container">
+                    <div class="products-columns">
                         @foreach ($arr['goods'] as $value)
 
 
                             <div class="products-category__list__item">
                                 <div class="products-category__list__item__title-product"><a href="good/?id={{ $value['good_id'] }}">{{ $value['name'] }}</a></div>
                                 <div class="products-category__list__item__thumbnail"><a href="good/?id={{ $value['good_id'] }}" class="products-category__list__item__thumbnail__link"><img src="/img/cover/{{ $value['photo_id'] }}" alt="Preview-image"></a></div>
-                                <div class="products-category__list__item__description"><span class="products-price">{{ $value['price'] }} руб</span><a href="good/?id={{ $value['good_id'] }}" class="btn btn-blue">Купить</a></div>
+                                <div class="products-category__list__item__description"><span class="products-price">{{ $value['price'] }} руб</span><a href="#" class="btn btn-blue">Купить</a></div>
                             </div>
 
 
                         @endforeach
-
-
                     </div>
                 </div>
-                <div class="content-footer__container">
-                    <ul class="page-nav">
-                        <li class="page-nav__item"><a href="#" class="page-nav__item__link"><i class="fa fa-angle-double-left"></i></a></li>
-                        <li class="page-nav__item"><a href="#" class="page-nav__item__link">1</a></li>
-                        <li class="page-nav__item"><a href="#" class="page-nav__item__link">2</a></li>
-                        <li class="page-nav__item"><a href="#" class="page-nav__item__link">3</a></li>
-                        <li class="page-nav__item"><a href="#" class="page-nav__item__link">4</a></li>
-                        <li class="page-nav__item"><a href="#" class="page-nav__item__link">5</a></li>
-                        <li class="page-nav__item"><a href="#" class="page-nav__item__link"><i class="fa fa-angle-double-right"></i></a></li>
-                    </ul>
-                </div>
             </div>
-            <div class="content-bottom"></div>
         </div>
     </div>
     <footer class="footer">
         <div class="footer__footer-content">
+
             <div class="random-product-container">
                 <div class="random-product-container__head">Случайный товар</div>
                 <div class="random-product-container__content">
@@ -166,6 +205,11 @@
         </div>
     </footer>
 </div>
+
+
+
+
+
 
 </body>
 </html>
