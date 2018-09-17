@@ -31,3 +31,4 @@ Route::get('/changeemail', 'AdminActions@changeEmail');
 Route::get('/search', 'Search@search');
 Route::get('/about', 'About@about');
 Route::get('/news', 'News@news');
+Route::get('/myorders', 'MyOrders@myOrders');

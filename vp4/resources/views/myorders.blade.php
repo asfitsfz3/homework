@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="ru">
 <head>
-    <title>category - ГеймсМаркет</title>
+    <title>1product - ГеймсМаркет</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/media.css">
 </head>
 <body>
+
 <div class="main-wrapper">
     <header class="main-header">
         <div class="logotype-container"><a href="/" class="logotype-link"><img src="/img/logo.png" alt="Логотип"></a></div>
@@ -18,7 +19,7 @@
                 <li class="nav-list__item"><a href="/" class="nav-list__item__link">Главная</a></li>
                 <li class="nav-list__item"><a href="/myorders" class="nav-list__item__link">Мои заказы</a></li>
                 <li class="nav-list__item"><a href="/news" class="nav-list__item__link">Новости</a></li>
-                <li class="nav-list__item"><a href="/about" class="nav-list__item__link">О компании</a></li>          </ul>
+                <li class="nav-list__item"><a href="/about" class="nav-list__item__link">О компании</a></li>           </ul>
         </nav>
         <div class="header-contact">
             <div class="header-contact__phone"><a href="#" class="header-contact__phone-link">Телефон: 33-333-33</a></div>
@@ -30,6 +31,7 @@
                     <div class="payment-basket__status__basket"><span class="payment-basket__status__basket-value">0</span><span class="payment-basket__status__basket-value-descr">товаров</span></div>
                 </div>
             </div>
+
             @if (Route::has('login'))
 
                 @auth
@@ -44,6 +46,7 @@
                 @endauth
 
             @endif
+
         </div>
     </header>
     <div class="middle">
@@ -54,7 +57,8 @@
                     <ul class="sidebar-category">
                         @foreach ($arr['categories'] as $value)
                             <li class="sidebar-category__item"><a href="category/?id={{ $value['category_id'] }}" class="sidebar-category__item__link">{{ $value['name'] }}</a></li>
-                        @endforeach                </ul>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
             <div class="sidebar-item">
@@ -80,12 +84,12 @@
         <div class="main-content">
             <div class="content-top">
                 <div class="content-top__text">Купить игры неборого без регистрации смс с торента, получить компкт диск, скачать Steam игры после оплаты</div>
-                <div class="slider"><img src="/img/slider.png" alt="Image" class="image-main"></div>
+                <div class="slider"><img src="img/slider.png" alt="Image" class="image-main"></div>
             </div>
             <div class="content-middle">
                 <div class="content-head__container">
                     <div class="content-head__title-wrap">
-                        <div class="content-head__title-wrap__title bcg-title">Игры в разделе {{ $arr['category_name'] }}</div>
+                        <div class="content-head__title-wrap__title bcg-title">Мои заказы</div>
                     </div>
                     <div class="content-head__search-block">
                         <div class="search-container">
@@ -97,21 +101,21 @@
                     </div>
                 </div>
                 <div class="content-main__container">
-                    <div class="products-category__list">
+                    <div class="cart-product-list">
+                        @foreach ($arr['my_goods'] as $value)
 
-                        @foreach ($arr['goods'] as $value)
 
-
-                            <div class="products-category__list__item">
-                                <div class="products-category__list__item__title-product"><a href="good/?id={{ $value['good_id'] }}">{{ $value['name'] }}</a></div>
-                                <div class="products-category__list__item__thumbnail"><a href="good/?id={{ $value['good_id'] }}" class="products-category__list__item__thumbnail__link"><img src="/img/cover/{{ $value['photo_id'] }}" alt="Preview-image"></a></div>
-                                <div class="products-category__list__item__description"><span class="products-price">{{ $value['price'] }} руб</span><a href="good/?id={{ $value['good_id'] }}" class="btn btn-blue">Купить</a></div>
+                        <div class="cart-product-list__item">
+                            <div class="cart-product__item__product-photo"><img src="img/cover/{{ $value['photo_id'] }}" class="cart-product__item__product-photo__image"></div>
+                            <div class="cart-product__item__product-name">
+                                <div class="cart-product__item__product-name__content"><a href="#">{{ $value['name'] }}</a></div>
                             </div>
-
+                            <div class="cart-product__item__cart-date">
+                            </div>
+                            <div class="cart-product__item__product-price"><span class="product-price__value">{{ $value['price'] }}</span></div>
+                        </div>
 
                         @endforeach
-
-
                     </div>
                 </div>
                 <div class="content-footer__container">
@@ -158,6 +162,11 @@
         </div>
     </footer>
 </div>
+
+
+
+
+
 
 </body>
 </html>

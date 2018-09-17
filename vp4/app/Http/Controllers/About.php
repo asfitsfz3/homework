@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Category;
+use App\Good;
+use Illuminate\Http\Request;
+
+class About extends Controller
+{
+    public function about()
+    {
+        $cat = Category::all();
+        $good = Good::all();
+        $random_good = $good[rand(1, count($good)-1)];
+        $arr = array (
+            'goods' => $good,
+            'categories' => $cat,
+            'random_good' => $random_good
+        );
+
+        return view('about')->with('arr', $arr);
+    }
+}
